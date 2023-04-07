@@ -1,0 +1,44 @@
+#spring:
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: classpath:/shared
+#  profiles:
+#    active: native
+#  application:
+#    name: config-server
+#server:
+#  port: 8768
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: master
+          username: yuanshuo1022
+          password: ys3285739.
+          uri: https://github.com/yuanshuo1022/springCloudProject.git
+          search-paths: config
+  application:
+    name: config-server
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "busrefresh"
+server:
+  port: 8768
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7005/eureka/
+logging:
+  level:
+    org.springframework.cloud.bus: debug

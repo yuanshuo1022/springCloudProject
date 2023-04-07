@@ -1,0 +1,24 @@
+server:
+  port: 8886
+spring:
+  application:
+    name: zuul-service
+#  cloud:
+#    config:
+#      uri: http://localhost:7888
+#    gateway:
+#      enabled: true
+  zuul:
+    routes:
+      consumer :
+        path: /test/**
+        url: http://localhost:7004
+        serviceId:  consumer
+      provider :
+        path: /provider/**
+        url: http://localhost:8887
+        serviceId: provider
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7005/eureka/

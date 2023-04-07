@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      uri: http://localhost:8768
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  profiles:
+    active: dev
+  application:
+    name: config-client
+      # rabbitmq配置
+server:
+  port: 8761
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7005/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh"
+

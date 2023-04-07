@@ -1,0 +1,25 @@
+server:
+  port: 7004
+spring:
+  application:
+    name: consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7005/eureka/
+    register-with-eureka: true
+logging:
+  level:
+    com.example.feignapi.entity.service.UserClient: DEBUG
+#feign默认开始 hystrix
+feign:
+  circuitbreaker:
+       enabled: true
+# 加载所有的端点/默认只加载了 info / health
+# 监控端口配置
+management:
+  endpoints:
+    web:
+      exposure:
+        # 开启 info,health；新版本中只默认开启了 health
+        include: info,health
